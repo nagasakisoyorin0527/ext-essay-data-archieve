@@ -1,3 +1,6 @@
+#Build with assistance of GPT 5.5
+#The code was reviewed, debugged, and verified by the student
+
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
