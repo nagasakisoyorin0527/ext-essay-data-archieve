@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+from matplotlib.ticker import MultipleLocator
 
 #initialization and plotting
 x = []
@@ -29,7 +30,8 @@ y_ideal_points = np.array(y_ideal)
 plt.ylabel("Normalised Performance (relative to 855 MHz)")
 plt.xlabel("Frequency / MHz")
 plt.title("Theoretical vs. Actual Normalised Performance of the RTX 3080")
-
+ax = plt.gca()
+ax.xaxis.set_major_locator(MultipleLocator(60))
 
 
 plt.plot(
@@ -75,9 +77,8 @@ ss_res = np.sum(residuals**2)
 ss_tot = np.sum((y_actual_points - np.mean(y_actual_points))**2) 
 r_squared = 1 - (ss_res / ss_tot)
 print(f"R² = {r_squared:.4f}")
-
-plt.annotate(f"Normalized performance: {y_ideal[-1]}", [1860.0, y_ideal[-1]], arrowprops=dict(arrowstyle="-"), )
-plt.annotate(f"Normalized performance: {y_actual[-1]}", [1860.0, y_actual[-1]])
+plt.annotate(f"Normalized performance: {y_ideal[-1]:.2f}", [1860.0, y_ideal[-1]],xytext=(-300,10), arrowprops=dict(arrowstyle="-"), textcoords="offset points")
+plt.annotate(f"Normalized performance: {y_actual[-1]:.2f}", [1860.0, y_actual[-1]],xytext=(-300,10), arrowprops=dict(arrowstyle="-"), textcoords="offset points")
 
 
 #labeling the lines
