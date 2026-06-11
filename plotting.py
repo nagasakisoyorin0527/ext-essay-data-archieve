@@ -3,6 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
 import csv
 
 #initiation and plotting
@@ -24,6 +25,8 @@ y_error = [err, err]
 
 x_points = np.array(x)
 y_points_tsw = np.array(y_tsw)
+ax = plt.gca()
+ax.xaxis.set_major_locator(MultipleLocator(60))
 plt.plot(x_points, y_points_tsw, "o", color = "orange")
 plt.ylabel("tokens·s⁻¹·W⁻¹")
 plt.xlabel("Frequency/MHz")
